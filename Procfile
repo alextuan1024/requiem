@@ -1,1 +1,1 @@
-web: rerun -build -watch ./cmd/ github.com/alextuan1024/requiem web
+web: rerun -build -watch ./web/ github.com/alextuan1024/requiem web

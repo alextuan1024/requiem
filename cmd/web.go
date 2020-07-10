@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	v1 "github.com/alextuan1024/requiem/web/v1"
 	"github.com/gin-gonic/gin"
 	"github.com/urfave/cli/v2"
 	"net/http"
@@ -24,11 +25,10 @@ func init() {
 			r.GET("/ping", func(c *gin.Context) {
 				c.String(http.StatusOK, "pong")
 			})
-
+			v1.RegisterHandlers(r, v1.GetApi())
 			port := c.String("port")
 			return r.Run(port)
 		},
-		Subcommands: nil,
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:    "port",

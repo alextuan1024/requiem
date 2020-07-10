@@ -21,4 +21,4 @@ install: vet
 
 build: vet
 	echo "building.."
-	$(GO) build -ldflags '-X $(ROOF)/cmd.version=debug' -o $(NAME)
+	$(GO) build -ldflags "-X $(ROOF)/cmd.version=debug" -o $(NAME)
