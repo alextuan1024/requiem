@@ -6,6 +6,7 @@ import (
 )
 
 var app *cli.App
+var version string
 
 func init() {
 	app = &cli.App{
@@ -13,6 +14,7 @@ func init() {
 		Usage:    "requiem [command]",
 		Commands: []*cli.Command{},
 		Flags:    []cli.Flag{},
+		Version:  version,
 	}
 }
 
