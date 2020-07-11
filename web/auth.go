@@ -5,7 +5,6 @@ import (
 	"github.com/alextuan1024/requiem/settings"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"log"
 	"net/http"
 	"strings"
 	"time"
@@ -74,7 +73,6 @@ func AuthMiddleware(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusBadRequest, err)
 		return
 	}
-	c.Next()
 }
 
 func getTokenFromReq(c *gin.Context) (string, error) {
@@ -107,7 +105,7 @@ func parseToken(token string) (*jwt.StandardClaims, error) {
 	})
 	if err != nil {
 		if !errors.Is(err, ErrInvalidToken) {
-			log.Println(err)
+			logger().Info(err)
 		}
 		return nil, ErrInvalidToken
 	}

@@ -9,7 +9,6 @@ DATE:=$(shell date '+%Y%m%d')
 TAG:=$(shell git describe --tags --always)
 LDFLAGS:= -X $(ROOF)/cmd.version=$(TAG)
 GO=$(shell which go)
-GIN_RELEASE=release
 
 vet:
 	echo "checking ./..."
@@ -17,8 +16,8 @@ vet:
 
 install: vet
 	echo "build and install"
-	GIN_MODE=$(GIN_RELEASE) $(GO) install -ldflags "$(LDFLAGS)"
+	$(GO) install -ldflags "$(LDFLAGS)"
 
 build: vet
-	echo "building.."
+	echo "building..."
 	$(GO) build -ldflags "-X $(ROOF)/cmd.version=debug" -o $(NAME)

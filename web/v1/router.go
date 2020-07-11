@@ -21,6 +21,7 @@ func GetApi() *Api {
 }
 
 func (a *Api) handlerFoo(c *gin.Context) {
+	logger().Info("foo")
 	c.String(http.StatusOK, "Bar")
 }
 
